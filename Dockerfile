@@ -23,6 +23,8 @@ RUN set -ex; \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends $DEBIAN_PACKAGES && \
+    # AMG installs
+    apt-get install -y openssh-client && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --no-cache-dir --upgrade pip && \
@@ -45,7 +47,7 @@ RUN pipenv sync
 # layers when we change a line of code.
 ADD --chown=app:app . /app
 
-# RUN git config --global --add safe.directory /app
+RUN git config --global --add safe.directory /app
 
 # Entry point
 #ENTRYPOINT ["/bin/bash","./docker-entrypoint.sh"]
