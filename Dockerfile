@@ -45,7 +45,7 @@ RUN pipenv sync
 # layers when we change a line of code.
 ADD --chown=app:app . /app
 
-RUN git config --global --add safe.directory /app
+# RUN git config --global --add safe.directory /app
 
 # Entry point
 #ENTRYPOINT ["/bin/bash","./docker-entrypoint.sh"]
